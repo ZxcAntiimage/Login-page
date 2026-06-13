@@ -1,0 +1,24 @@
+generator client {
+  provider               = "prisma-client"
+  output                 = "../../src/generated/prisma"
+  runtime                = "nodejs"
+  moduleFormat           = "esm"
+  generatedFileExtension = "ts"
+  importFileExtension    = "ts"
+}
+datasource db {
+  provider = "mysql"
+}
+
+model User {
+  id                    Int       @id @default(autoincrement())
+  email                 String    @unique
+  password              String
+  firstName             String?
+  lastName              String?
+  phone                 String?
+  verificationCode      String?
+  verificationCodeExp   DateTime?
+  emailVerified         Boolean   @default(false)
+  createdAt             DateTime  @default(now())
+}
