@@ -1,2 +1,2 @@
-import NewPasswordContent from "./ui/ui"
-export { NewPasswordContent }
+import { NewPasswordForm } from "./ui/ui";
+export {NewPasswordForm}

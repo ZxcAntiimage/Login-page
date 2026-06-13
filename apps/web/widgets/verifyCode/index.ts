@@ -1,2 +1,2 @@
-import VerifyCodeContent from "./ui/ui"
-export { VerifyCodeContent }
+import { VerifyCodeForm } from "./ui/ui";
+export {VerifyCodeForm}
