@@ -7,8 +7,13 @@ import { PrismaClient } from "../src/generated/prisma/client";
 @Injectable()
 export class PrismaService extends PrismaClient implements OnModuleInit, OnModuleDestroy {
     constructor() {
-         const adapter = new PrismaMariaDb(process.env.DATABASE_URL!);
-        super({ adapter });
+        super({
+            datasources: {
+                db: {
+                    url: process.env.DATABASE_URL,
+                },
+            },
+        } as any);
     }
 
     async onModuleInit() {
