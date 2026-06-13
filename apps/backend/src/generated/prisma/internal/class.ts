@@ -12,7 +12,7 @@
  */
 
 import * as runtime from "@prisma/client/runtime/client"
-import type * as Prisma from "./prismaNamespace.ts"
+import type * as Prisma from "./prismaNamespace"
 
 
 const config: runtime.GetPrismaClientConfig = {
@@ -20,7 +20,7 @@ const config: runtime.GetPrismaClientConfig = {
   "clientVersion": "7.8.0",
   "engineVersion": "3c6e192761c0362d496ed980de936e2f3cebcd3a",
   "activeProvider": "mysql",
-  "inlineSchema": "generator client {\n  provider               = \"prisma-client\"\n  output                 = \"../src/generated/prisma\"\n  runtime                = \"nodejs\"\n  moduleFormat           = \"esm\"\n  generatedFileExtension = \"ts\"\n  importFileExtension    = \"ts\"\n}\n\ndatasource db {\n  provider = \"mysql\"\n}\n\nmodel User {\n  id                  Int       @id @default(autoincrement())\n  email               String    @unique\n  password            String\n  firstName           String?\n  lastName            String?\n  phone               String?\n  verificationCode    String?\n  verificationCodeExp DateTime?\n  emailVerified       Boolean   @default(false)\n  createdAt           DateTime  @default(now())\n}\n",
+  "inlineSchema": "generator client {\n  provider = \"prisma-client\"\n  output   = \"../src/generated/prisma\"\n}\n\ndatasource db {\n  provider = \"mysql\"\n}\n\nmodel User {\n  id                  Int       @id @default(autoincrement())\n  email               String    @unique\n  password            String\n  firstName           String?\n  lastName            String?\n  phone               String?\n  verificationCode    String?\n  verificationCodeExp DateTime?\n  emailVerified       Boolean   @default(false)\n  createdAt           DateTime  @default(now())\n}\n",
   "runtimeDataModel": {
     "models": {},
     "enums": {},
@@ -45,10 +45,10 @@ async function decodeBase64AsWasm(wasmBase64: string): Promise<WebAssembly.Modul
 }
 
 config.compilerWasm = {
-  getRuntime: async () => await import("@prisma/client/runtime/query_compiler_fast_bg.mysql.mjs"),
+  getRuntime: async () => await import("@prisma/client/runtime/query_compiler_fast_bg.mysql.js"),
 
   getQueryCompilerWasmModule: async () => {
-    const { wasm } = await import("@prisma/client/runtime/query_compiler_fast_bg.mysql.wasm-base64.mjs")
+    const { wasm } = await import("@prisma/client/runtime/query_compiler_fast_bg.mysql.wasm-base64.js")
     return await decodeBase64AsWasm(wasm)
   },
 
