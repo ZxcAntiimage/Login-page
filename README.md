@@ -2,7 +2,7 @@
 
 <img width="1920" height="816" alt="image" src="https://github.com/user-attachments/assets/23d4572b-fd72-493d-b360-ff8f0bba0c90" />
 
-[Demo](https://login-page-web-two.vercel.app/)
+
 
 A comprehensive authentication solution built with Next.js (frontend) and NestJS (backend) using modern authentication patterns and Feature-Sliced Design (FSD) methodology.
 
